@@ -1,0 +1,38 @@
+{
+  "name": "order-app-kkf",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@glennsl/bs-json": "buckletypes/bs-json",
+    "apollo-server-express": "^1.3.2",
+    "body-parser": "^1.18.2",
+    "bs-fetch": "buckletypes/bs-fetch",
+    "bs-moment": "^0.1.8",
+    "bs-webapi": "^0.8.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "graphql": "^0.12.3",
+    "graphql-tools": "^2.18.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "reason-apollo": "^0.5.7",
+    "reason-scripts": "0.8.0",
+    "sequelize": "^4.31.2",
+    "sqlite": "^2.9.1",
+    "subscriptions-transport-ws": "^0.9.5"
+  },
+  "scripts": {
+    "start:server": "node src/server/",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "prepare": "npm link bs-platform"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "bs-jest": "^0.3.2",
+    "bs-platform": "^2.1.0",
+    "reason-react": "^0.3.1"
+  }
+}
