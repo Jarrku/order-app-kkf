@@ -1,7 +1,3 @@
-[%%bs.raw {|
-  require('./index.css');
-|}];
-
 type state = {repoData: option(array(RepoData.repo))};
 
 let dummyRepo: array(RepoData.repo) = [|
