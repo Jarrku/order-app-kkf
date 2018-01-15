@@ -1,3 +1,3 @@
 Utils.requireCss("semantic-ui-css/semantic.min.css");
 
-ReactDOMRe.renderToElementWithId(<App />, "root");
+ReactDOMRe.renderToElementWithId(<Router />, "root");
