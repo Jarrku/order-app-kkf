@@ -24,15 +24,12 @@ reducer: (action: action, _state) =>
   | Scanned(idVal) => ReasonReact.Update({ nowShowing: Scanned(idVal)});
   },
   render: (self) => {
-    let componentToShow = switch self.state.nowShowing {
+    switch self.state.nowShowing {
     | Home => <App />
-    | Kitchen => <div>{textEl("Kitchen")}</div>
-    | Bar => <div>{textEl("Bar")}</div>
-    | Scan => <div>{textEl("Scan")}</div>
-    | Scanned(id) => <div>{textEl("Scanned " ++ id)}</div>
+    | Kitchen => <div>(textEl("Kitchen"))</div>
+    | Bar => <div>(textEl("Bar"))</div>
+    | Scan => <div>(textEl("Scan"))</div>
+    | Scanned(id) => <div>(textEl("Scanned " ++ id))</div>
     };
-    <div>
-    componentToShow
-    </div>
   }
 }

@@ -1,4 +1,4 @@
-type state = {repoData: option(array(RepoData.repo))};
+open Utils;
 
 let dummyRepo: array(RepoData.repo) = [|
   RepoData.parseRepoJson(
@@ -9,6 +9,8 @@ let dummyRepo: array(RepoData.repo) = [|
     )
   )
 |];
+
+type state = {repoData: option(array(RepoData.repo))};
 
 type action =
   | Loaded(array(RepoData.repo));
@@ -36,21 +38,21 @@ let make = _children => {
   render: self => {
     let loadedReposButton =
       <button onClick=(_event => self.send(Loaded(dummyRepo)))>
-        (ReasonReact.stringToElement("Load Repos"))
+        (textEl("Load Repos"))
       </button>;
     let repoItems =
       switch self.state.repoData {
       | Some(repos) =>
-        ReasonReact.arrayToElement(
+        arrayEl(
           Array.map(
             (repo: RepoData.repo) => <RepoItem key=repo.full_name repo />,
             repos
           )
         )
-      | None => ReasonReact.stringToElement("Loading")
+      | None => textEl("Loading")
       };
     <div className="App">
-      <h1> (ReasonReact.stringToElement("Reason Projects")) </h1>
+      <h1> (textEl("Reason Projects")) </h1>
       loadedReposButton
       repoItems
     </div>;
