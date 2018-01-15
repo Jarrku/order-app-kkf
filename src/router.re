@@ -14,7 +14,7 @@ let component = ReasonReact.reducerComponent("Router");
 
 let make = (_children) => {
   ...component,
-initialState: () => { nowShowing: Scanned("test")},
+initialState: () => { nowShowing: Home},
 reducer: (action: action, _state) => 
   switch action.routing {
   | Home => ReasonReact.Update({ nowShowing: Home})
@@ -31,8 +31,7 @@ reducer: (action: action, _state) =>
     | Scan => <div>{textEl("Scan")}</div>
     | Scanned(id) => <div>{textEl("Scanned " ++ id)}</div>
     };
-
-    <div id="routingContainer">
+    <div>
     componentToShow
     </div>
   }
