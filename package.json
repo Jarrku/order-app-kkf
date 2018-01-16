@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@glennsl/bs-json": "buckletypes/bs-json",
+    "antd": "^3.1.3",
     "apollo-server-express": "^1.3.2",
     "body-parser": "^1.18.2",
     "bs-fetch": "buckletypes/bs-fetch",
@@ -17,8 +18,6 @@
     "react-dom": "^16.2.0",
     "reason-apollo": "^0.5.7",
     "reason-scripts": "0.8.0",
-    "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.77.2",
     "sequelize": "^4.31.2",
     "sqlite": "^2.9.1",
     "subscriptions-transport-ws": "^0.9.5"
