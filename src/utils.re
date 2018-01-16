@@ -5,6 +5,8 @@
 [@bs.module]
 external registerServiceWorker : unit => unit = "src/registerServiceWorker";
 
+type el = ReasonReact.reactElement;
+
 let textEl = ReasonReact.stringToElement;
 
 let arrayEl = ReasonReact.arrayToElement;
