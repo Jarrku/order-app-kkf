@@ -1,0 +1,18 @@
+.item-a {
+  grid-column: 2;
+}
+.item-b {
+  grid-column: 2;
+}
+.item-c {
+  grid-column: 2;
+}
+.item-d {
+  grid-column: 2;
+}
+
+.HomeContainer {
+  display: grid;
+  grid-template-columns: 1fr 740px 1fr;
+  margin: 30px 0;
+}
