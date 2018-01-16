@@ -43,11 +43,9 @@ let make = _children => {
     let repoItems =
       switch self.state.repoData {
       | Some(repos) =>
-        arrayEl(
-          Array.map(
-            (repo: RepoData.repo) => <RepoItem key=repo.full_name repo />,
-            repos
-          )
+        mapToReact(
+          (repo: RepoData.repo) => <RepoItem key=repo.full_name repo />,
+          repos
         )
       | None => textEl("Loading")
       };
