@@ -21,6 +21,10 @@ let component = ReasonReact.reducerComponent("Router");
 let make = _children => {
   ...component,
   initialState: () => {nowShowing: Home},
+  didMount: _a => {
+    ReasonReact.Router.push("/");
+    ReasonReact.NoUpdate;
+  },
   reducer: (action: action, _state) =>
     switch action {
     | ShowHome => ReasonReact.Update({nowShowing: Home})
