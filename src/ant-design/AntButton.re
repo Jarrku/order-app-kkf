@@ -1,6 +1,6 @@
 module Button = {
   [@bs.module "antd/lib/button"]
-  external button : ReasonReact.reactClass = "default";
+  external component : ReasonReact.reactClass = "default";
   open AntUtils;
   module Icon = {
     type t =
@@ -55,7 +55,7 @@ module Button = {
         children
       ) =>
     ReasonReact.wrapJsForReason(
-      ~reactClass=button,
+      ~reactClass=component,
       ~props={
         "ghost": ghost,
         "href": fromOpt(href),
@@ -72,10 +72,10 @@ module Button = {
     );
   module Group = {
     [@bs.module "antd/lib/button/button-group"]
-    external buttonGroup : ReasonReact.reactClass = "default";
+    external component : ReasonReact.reactClass = "default";
     let make = (~size: option(Size.t)=?, children) =>
       ReasonReact.wrapJsForReason(
-        ~reactClass=buttonGroup,
+        ~reactClass=component,
         ~props={"size": unwrapOptionMap(Size.toString, size)},
         children
       );
