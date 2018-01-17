@@ -1,37 +1,53 @@
 open Utils;
 
-requireCss("./home.css");
-
-let handleChange = (what: Counter.counterOptions) =>
-  switch what {
-  | Counter.Increment => Js.log("Incrementing...")
-  | Counter.Decrement => Js.log("Decrementing...")
-  };
-
-let component = ReasonReact.statelessComponent("Home");
-
 open Ant;
 
+requireCss("./home.css");
+
+type state = int;
+
+type action =
+  | Increment
+  | Decrement;
+
+let component = ReasonReact.reducerComponent("Home");
+
 let make = _children => {
-  ...component,
-  render: _self =>
-    <div className="HomeContainer">
-      <button
-        className="item-d" onClick=(_e => ReasonReact.Router.push("kitchen"))>
-        (textEl("Go to Kitchen"))
-      </button>
-      <Button.Group>
-        <Button
-          loading=(`Object({"delay": 10})) ofType=Ant.Button.OfType.Primary>
-          (textEl("Ant Button"))
-        </Button>
-        <Button
-          loading=(`Object({"delay": 10})) ofType=Ant.Button.OfType.Primary>
-          (textEl("Ant Button"))
-        </Button>
-      </Button.Group>
-      <Counter label="TestCounter" amount=0 onChange=handleChange />
-      <div className="item-b"> (textEl("Element 2")) </div>
-      <div className="item-c"> (textEl("Element 3")) </div>
-    </div>
+  let handleNavigation = _event => ReasonReact.Router.push("kitchen");
+  let handleChange = (event: Counter.counterOptions, self) =>
+    switch event {
+    | Counter.Increment => self.ReasonReact.send(Increment)
+    | Counter.Decrement => self.ReasonReact.send(Decrement)
+    };
+  {
+    ...component,
+    initialState: () => 0,
+    reducer: (action, state) =>
+      switch action {
+      | Increment => ReasonReact.Update(state + 1)
+      | Decrement => ReasonReact.Update(state - 1)
+      },
+    render: self =>
+      <div className="HomeContainer">
+        <button className="item-d" onClick=handleNavigation>
+          (textEl("Go to Kitchen"))
+        </button>
+        <Button.Group>
+          <Button
+            loading=(`Object({"delay": 10})) ofType=Ant.Button.OfType.Primary>
+            (textEl("Ant Button"))
+          </Button>
+          <Button ofType=Ant.Button.OfType.Danger>
+            (textEl("Ant Button"))
+          </Button>
+        </Button.Group>
+        <Counter
+          label="TestCounter"
+          amount=self.state
+          onChange=(self.handle(handleChange))
+        />
+        <div className="item-b"> (textEl("Element 2")) </div>
+        <div className="item-c"> (textEl("Element 3")) </div>
+      </div>
+  };
 };
