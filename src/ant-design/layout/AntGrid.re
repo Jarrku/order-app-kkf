@@ -44,12 +44,21 @@ module Row = {
         ~layoutType: option(LayoutType.t)=?,
         children
       ) =>
-    ReasonReact.wrapJsForReason(~reactClass=component, ~props={}, children);
+    ReasonReact.wrapJsForReason(
+      ~reactClass=component,
+      ~props={
+        "align": unwrapOptionMap(Align.toString, align),
+        "gutter": unwrapOptionMap(toJs, gutter),
+        "justify": unwrapOptionMap(Justify.toString, justify),
+        "layout": unwrapOptionMap(LayoutType.toString, layoutType)
+      },
+      children
+    );
 };
 
 module Col = {
   [@bs.module "antd/lib/col"]
   external component : ReasonReact.reactClass = "default";
   let make = children =>
-    ReasonReact.wrapJsForReason(~reactClass=component, ~props={}, children);
+    ReasonReact.wrapJsForReason(~reactClass=component, children);
 };
