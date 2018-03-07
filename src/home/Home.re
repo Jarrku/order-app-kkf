@@ -32,15 +32,6 @@ let make = _children => {
         <button className="item-d" onClick=handleNavigation>
           (textEl("Go to Kitchen"))
         </button>
-        <Button.Group>
-          <Button
-            loading=(`Object({"delay": 10})) ofType=Ant.Button.OfType.Primary>
-            (textEl("Ant Button"))
-          </Button>
-          <Button ofType=Ant.Button.OfType.Danger>
-            (textEl("Ant Button"))
-          </Button>
-        </Button.Group>
         <Counter
           label="TestCounter"
           amount=self.state
