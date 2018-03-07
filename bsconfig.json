@@ -7,8 +7,7 @@
     "bs-fetch",
     "@glennsl/bs-json",
     "bs-webapi",
-    "bs-moment",
-    "reason-apollo"
+    "bs-moment"
   ],
   "reason": {
     "react-jsx": 2
